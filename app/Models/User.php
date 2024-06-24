@@ -44,4 +44,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    //relacion uno a uno, este es el normal, puesto que este modelo no tiene llaves foraneas
+    public function phone() {
+        //Esto permite buscar la relacion 1:1 con la tabla Phone
+        //Primaria: id
+        //foranea: user_id
+        return $this->hasOne(Phone::class);
+        //Usar el siguiente sino se estan usando convenciones
+        // return $this->hasOne(Phone::class,'user_id','id');
+    }
 }
