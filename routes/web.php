@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Comment;
 use App\Models\Phone;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -9,8 +11,24 @@ Route::get('/', function () {
 });
 
 Route::get('prueba', function () {
+    /* $comment = Comment::find(1);
 
-   /*  User::create([
+    return $comment->post; */
+
+    $post = Post::find(2);
+
+    $post->comments()->create([
+        'content' => 'Comentario de prueba'
+    ]);
+
+    return 'comentario creado';
+
+});
+
+
+//esto va dentro de prueba
+
+/*  User::create([
         'name' => 'Jose',
         'email' => 'josealbertino4@gmail.com',
         'password' => bcrypt('12345678')
@@ -29,10 +47,9 @@ Route::get('prueba', function () {
 
     return $user; */
 
-    //relacion inversa
+    /* //relacion inversa
     $phone = Phone::where('id',1)
     ->with('user')
     ->first();
 
-    return $phone;
-});
+    return $phone; */
